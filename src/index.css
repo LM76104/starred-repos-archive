@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Noto Sans SC", "PingFang SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #0F172A 100%);
+  min-height: 100vh;
+  color: #F8FAFC;
+  overflow-x: hidden;
+}
+
+/* 魔法背景粒子效果 */
+.magic-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, rgba(139, 92, 246, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(234, 179, 8, 0.2), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(139, 92, 246, 0.4), transparent),
+    radial-gradient(2px 2px at 130px 80px, rgba(34, 197, 94, 0.3), transparent),
+    radial-gradient(1px 1px at 160px 30px, rgba(139, 92, 246, 0.2), transparent);
+  background-size: 200px 100px;
+  animation: sparkle 8s linear infinite;
+}
+
+@keyframes sparkle {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* 玻璃拟态卡片 */
+.glass-card {
+  background: rgba(139, 92, 246, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 16px;
+  transition: all 0.3s ease-out;
+}
+
+.glass-card:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+  transform: translateY(-4px);
+}
+
+/* 魔法光晕按钮 */
+.magic-button {
+  background: linear-gradient(135deg, #6B21A8 0%, #8B5CF6 50%, #6B21A8 100%);
+  background-size: 200% 200%;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.magic-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.magic-button:hover::before {
+  left: 100%;
+}
+
+.magic-button:hover {
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+  background-position: 100% 100%;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(30, 27, 75, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6B21A8, #8B5CF6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #8B5CF6, #A78BFA);
+}
+
+/* iOS风格弹性动画 */
+.bounce-in {
+  animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 淡入上移动画 */
+.fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 稀有度颜色 */
+.rarity-common { color: #94A3B8; }
+.rarity-rare { color: #3B82F6; }
+.rarity-epic { color: #8B5CF6; }
+.rarity-legendary { color: #EAB308; }
+
+.bg-rarity-common { background-color: rgba(148, 163, 184, 0.2); }
+.bg-rarity-rare { background-color: rgba(59, 130, 246, 0.2); }
+.bg-rarity-epic { background-color: rgba(139, 92, 246, 0.2); }
+.bg-rarity-legendary { background-color: rgba(234, 179, 8, 0.2); }
+
+/* 资源类型图标背景 */
+.resource-ore { background: linear-gradient(135deg, #64748B, #94A3B8); }
+.resource-plant { background: linear-gradient(135deg, #166534, #22C55E); }
+.resource-animal { background: linear-gradient(135deg, #92400E, #F59E0B); }
+.resource-special { background: linear-gradient(135deg, #6B21A8, #8B5CF6); }
